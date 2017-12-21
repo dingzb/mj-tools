@@ -2,6 +2,7 @@ import sys
 
 import paramiko
 from PyQt4 import QtGui
+from PyQt4 import QtCore
 from main import Ui_MainWindow
 from new import Ui_Dialog
 
@@ -34,7 +35,9 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
         self.textBrowser.setText(stdout.read())
 
     def new_connection(self):
-        self.newWindow = QtGui.QDialog()
+        self.newWindow = NewWindow()
+        self.newWindow.setWindowModality(QtCore.Qt.ApplicationModal)
+        # self.newWindow.setWindowModality(QtCore.Qt.ApplicationModal)
         self.newWindow.show()
 
 class NewWindow(QtGui.QMainWindow, Ui_Dialog):
