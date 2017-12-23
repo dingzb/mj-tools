@@ -10,7 +10,7 @@ class TimeThread(QtCore.QThread):
   signal_time = QtCore.pyqtSignal(str, int) # 信号
 
   def __init__(self, parent=None):
-    super(TimeThread, self).__init__(parent)
+    QtCore.QThread.__init__(self, parent)
     self.working = True
     self.num = 0
 

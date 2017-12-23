@@ -1,0 +1,1 @@
+pyrcc4 -o "..\src\img_rc.py" img.qrc
