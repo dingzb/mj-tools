@@ -12,10 +12,11 @@ class ConnWindow(Ui_ConnWindow):
         Ui_ConnWindow.__init__(self)
 
 
-class MainWindow(Ui_MainWindow):
-    def __init__(self, parent):
+class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
+    def __init__(self):
+        QtGui.QMainWindow.__init__(self)
         Ui_MainWindow.__init__(self)
-        self.setupUi(parent)
+        self.setupUi(self)
         self.actionNew.triggered.connect(self.__show_conn_window)
 
     def __show_conn_window(self):
@@ -39,20 +40,12 @@ def __show_conn_window():
         Form1 = QtGui.QDialog()
         Form1.exec_()
 
-if __name__ == '__main__':
+def main():
     app = QtGui.QApplication(sys.argv)
-    mainWindow = QtGui.QMainWindow()
-    # mainWindowUI = MainWindow(mainWindow)
-    mainWindow.move(100, 100)
-    ii = QtGui.QPushButton(mainWindow)
-    ii.move(0,0)
-    ii.clicked.connect(__show_conn_window)
+    mainWindow = MainWindow()
     mainWindow.show()
-    #
     sys.exit(app.exec_())
-    # app = QtGui.QApplication(sys.argv)
-    # Form = QtGui.QWidget()
-    # window = MainWindow()
-    # window.setupUi(Form)
-    # Form.show()
-    # sys.exit(app.exec_())
+
+
+if __name__ == '__main__':
+    main()
